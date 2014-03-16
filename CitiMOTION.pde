@@ -1,8 +1,12 @@
 float mapScreenWidth, mapScreenHeight;
-float mapGeoLeft   = -74.05;          
-float mapGeoRight  =  -73.92;          
+// float mapGeoLeft   = -74.05; 
+float mapGeoLeft   = -74.03;          
+//float mapGeoRight  =  -73.92;
+float mapGeoRight  =  -73.85;    
+//float mapGeoTop    =  40.775;
 float mapGeoTop    =  40.775;          
-float mapGeoBottom =  40.67;     
+//float mapGeoBottom =  40.67;     
+      float mapGeoBottom =  40.67;
 
 int totalAnimationFrames = 10800;
 
@@ -13,9 +17,10 @@ Stations[] myStation;
 Rides[] myRide;
 
 void setup() {
-  size(900, 800);
+  size(1900, 1080);
   background(255);
   smooth();
+  frameRate(24);
 
   PFont fontLight = loadFont("Interstate-Light-48.vlw");
   PFont fontBlack = loadFont("Interstate-Black-48.vlw");
@@ -142,7 +147,6 @@ void getTripInfo() {
         start_day = 1;
       }
       startSeconds = startMinutes*60+start_day*24*60;
-      println(baseDataTime[0], startSeconds, date, hour);
       myRide[i-1] = new Rides(startLon, startLat, endLon, endLat, tripDuration, startTime, startSeconds, userType);
     }
     else {

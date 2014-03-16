@@ -26,5 +26,6 @@ class Stations {
     strokeWeight(2);
     ellipse(lon, lat, 8, 8);
     noStroke();
+    
   }
 }

@@ -17,7 +17,7 @@ Stations[] myStation;
 Rides[] myRide;
 
 void setup() {
-  size(1900, 1080);
+  size(1920, 1080);
   background(255);
   smooth();
   frameRate(24);

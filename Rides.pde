@@ -19,8 +19,8 @@ class Rides {
   int start_seconds;
   float percentTraveled;
   float travelled;
-  
- 
+
+
   //Constructor*****************************
   Rides(float startLon, float startLat, float endLon, float endLat, int tripDuration, String startTime, int startSeconds, String userType) {
     start = new PVector(map(startLon, mapGeoLeft, mapGeoRight, 0, width), map(startLat, mapGeoTop, mapGeoBottom, 0, height));
@@ -51,8 +51,8 @@ class Rides {
       }
       ellipse(start.x, start.y, 12, 12);
       ellipse(end.x, end.y, 15, 15);
-      
-      //Citibuke dot
+
+      //Citibike dot
       currentPosition = PVector.lerp(start, end, percentTraveled);
       noStroke();
       if (user_type.equals("Customer")) {
@@ -61,9 +61,9 @@ class Rides {
       else {
         fill(0, 0, 255, 100);
       }
-     ellipse(currentPosition.x, currentPosition.y, 3, 3);
-    // println(percentTraveled);
-     //Line between the stations
+      ellipse(currentPosition.x, currentPosition.y, 3, 3);
+      // println(percentTraveled);
+      //Line between the stations
       if (user_type.equals("Customer")) {
         stroke(255, 158, 0, 100);
       }
@@ -71,10 +71,10 @@ class Rides {
         stroke(0, 0, 200, 100);
       }
       strokeWeight(.25);
-      line(start.x, start.y, end.x, end.y); 
+      line(start.x, start.y, end.x, end.y);
     }
     else {
     }
   }
 }
- 
+

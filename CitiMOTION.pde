@@ -6,18 +6,26 @@ float mapGeoRight  =  -73.85;
 //float mapGeoTop    =  40.775;
 float mapGeoTop    =  40.775;          
 //float mapGeoBottom =  40.67;     
-      float mapGeoBottom =  40.67;
+float mapGeoBottom =  40.67;
 
 int totalAnimationFrames = 10800;
+int totalMinutes = 48*60;
+float currentTime;
+int currentMinutes;
+int currentHour;
+int newCurrentHour;
+String newCurrentMinutes;
+String ampm;
+String currentDate;
 
 Table myTable;
-
 
 Stations[] myStation;
 Rides[] myRide;
 
 void setup() {
-  size(1920, 1080);
+  size(int(1920*.75), int(1080*.75));
+  //size(1920, 1080);
   background(255);
   smooth();
   frameRate(24);
@@ -56,12 +64,42 @@ void draw() {
   float numSubscribers = (height - random(120, 200));
   float numCustomers = (height - random(120, 175));
 
-  
+
   textSize(27);
   fill(cInt);
   text("2200 riders", edge, (height-70)); // rides on screen now
   textSize(18);
-  text("October 31st at 4:30pm", edge, (height - 40)); // date in timeline
+
+  currentTime = float(frameCount)/totalAnimationFrames;
+  currentHour = floor(48*currentTime)%12;
+  currentMinutes = floor(currentTime*totalMinutes)%60;
+  if (floor((48*currentTime)%24)<12) {
+    ampm = "am";
+  }
+  else {
+    ampm = "pm";
+  }
+  if (floor(48*currentTime)>23) {
+    currentDate = "November 1st";
+  }
+  else {
+    currentDate = "October 31st";
+  }
+  if (currentHour == 0) {
+    newCurrentHour = 12;
+  }
+  else {
+    newCurrentHour = currentHour;
+  }
+
+  text(newCurrentHour, edge, height-600);
+  text(currentMinutes, edge, height-500);
+  text(ampm, edge, height-400);
+  text(currentDate, edge, height-350);
+
+
+  text(currentDate+" "+newCurrentHour+":"+nf(currentMinutes,2)+ampm, edge, (height - 40)); // date in timeline
+  //text("October 31st at 4:30pm", edge, (height - 40)); // date in timeline
   stroke(cInt);
   strokeWeight(1);
   line(edge, tBound, tBound, tBound); // timeline base

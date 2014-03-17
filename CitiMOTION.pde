@@ -67,25 +67,49 @@ void draw() {
 
 
   //Interface Development
-  int edge = 20;
+  int lEdge = 20;
+  int rEdge = width-20;
   int cInt = 150;
   float tBound = height-20;
 
-//Color legend
+  // Credits
+  fill(150);
+  textAlign(RIGHT);
+  textSize(14);
+  text("Sarah Kaufman", rEdge, 200); 
+  textSize(10);
+  text("Rudin Center for Transportation Policy", rEdge, 215);
+  textSize(14);
+  text("Jeff Ferzoco", rEdge, 235);
+  textSize(10);
+  text("linepointpath", rEdge, 250);
+  textSize(12);
+  text("with help from", rEdge, 275);
+  text("Juan Francisco Saldarriaga", rEdge, 290);
+  text("Chrys Wu", rEdge, 305);
+  text("Ekene Ijoema", rEdge, 320);
+  text("David Stolarsky", rEdge, 335);
+  text("Chrys Wu", rEdge, 350);
+  textAlign(LEFT);
+
+
+
+
+  //Color legend
   textSize(20);
   fill(0, 0, 255);
-  text("Annual Users", edge, 100);
+  text("Annual Users", lEdge, 100);
   fill(255, 158, 0);
-  text("Ticket Buyers", edge, 130);
+  text("Ticket Buyers", lEdge, 130);
   textSize(14);
-  text("(1 or 7 day passes)", edge, 150);
+  text("(1 or 7 day passes)", lEdge, 150);
 
-//Active rider bars
+  //Active rider bars
   textSize(27);
   fill(cInt);
-  text(active_rides+" riders", edge, (height-70)); // rides on screen now
-  
-  
+  text(active_rides+" riders", lEdge, (height-70)); // rides on screen now
+
+
   textSize(18);
   currentTime = float(frameCount)/totalAnimationFrames;
   currentHour = floor(48*currentTime)%12;
@@ -109,7 +133,7 @@ void draw() {
     newCurrentHour = currentHour;
   }
 
-  text(currentDate+" "+newCurrentHour+":"+nf(currentMinutes, 2)+ampm, edge, (height - 40)); // date in timeline
+  text(currentDate+" "+newCurrentHour+":"+nf(currentMinutes, 2)+ampm, lEdge, (height - 40)); // date in timeline
   //  stroke(cInt);
   //  strokeWeight(1);
   //  line(edge, tBound, tBound, tBound); // timeline base
@@ -119,11 +143,20 @@ void draw() {
   // Activity bars: measure of the number of riders on screen
   strokeWeight(20);
   stroke(0, 0, 255);
-  line(edge+10, height-120, edge+10, height-120-active_subscribers/4);
+  line(lEdge+10, height-120, lEdge+10, height-120-active_subscribers/4);
   stroke(255, 183, 0);
-  line(edge+35, height-120, edge+35, height-120-active_costumers/4);
+  line(lEdge+35, height-120, lEdge+35, height-120-active_costumers/4);
 }
 
+void keyPressed() {
+ //code in draw should not be executed
+ noLoop();
+}
+
+void keyReleased() {
+ //code in draw should be executed
+ loop();
+}
 
 int getCurrentTime() {
   return frameCount;

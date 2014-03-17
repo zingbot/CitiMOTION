@@ -50,16 +50,16 @@ class Rides {
         subscribers = 0;
         noFill();
         strokeWeight(4);
-        stroke(255, 158, 0, 50);
+        stroke(255, 158, 0, 20);
       }
       else {
         costumers = 0;
         subscribers = 1;
         noFill();
         strokeWeight(2);
-        stroke(0, 0, 255, 50);
+        stroke(0, 0, 255, 20);
       }
-      ellipse(start.x, start.y, 12, 12);
+      //ellipse(start.x, start.y, 12, 12);
       ellipse(end.x, end.y, 15, 15);
 
       //Citibike dot
@@ -71,7 +71,7 @@ class Rides {
       else {
         fill(0, 0, 255, 100);
       }
-      ellipse(currentPosition.x, currentPosition.y, 3, 3);
+      ellipse(currentPosition.x, currentPosition.y, 3.5, 3.5);
       // println(percentTraveled);
       //Line between the stations
       if (user_type.equals("Customer")) {

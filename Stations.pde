@@ -25,7 +25,15 @@ class Stations {
     stroke(100,50);
     strokeWeight(2);
     ellipse(lon, lat, 8, 8);
-    noStroke();
-    
+     //noStroke();
+    fill(150);
+    textSize(20);
+    if (dist(mouseX, mouseY, lon, lat) < 5) {
+      textAlign(RIGHT);
+      text(station_name, 1200, 200);
+      text(station_name, width-20, height-550);
+    } 
+    else {
+    }
   }
 }

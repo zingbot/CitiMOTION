@@ -1,11 +1,11 @@
 float mapScreenWidth, mapScreenHeight;
 float mapGeoLeft   = -74.04; 
 //float mapGeoLeft   = -74.03;          
-float mapGeoRight  =  -73.93;
+float mapGeoRight  =  -73.92;
 //float mapGeoRight  =  -73.85;    
 float mapGeoTop    =  40.775;
 //float mapGeoTop    =  40.775;          
-float mapGeoBottom =  40.67;     
+float mapGeoBottom =  40.66;     
 //float mapGeoBottom =  40.67;
 
 int totalAnimationFrames = 10800;
@@ -33,9 +33,12 @@ void setup() {
   smooth();
   frameRate(24);
 
-  PFont fontLight = loadFont("Interstate-Light-48.vlw");
-  PFont fontBlack = loadFont("Interstate-Black-48.vlw");
-  textFont(fontLight);
+  PFont  font24 = loadFont("OpenSans-24.vlw");
+  PFont  font40 = loadFont("OpenSans-40.vlw");
+  PFont  font10 = loadFont("OpenSans-10.vlw");
+  PFont  font18 = loadFont("OpenSans-18.vlw");
+
+  textFont(font40);
   textSize(40);
 
   mapScreenWidth = width;
@@ -47,6 +50,12 @@ void setup() {
 
 void draw() {
   background(255);
+  PFont  font40 = loadFont("OpenSans-40.vlw");
+  PFont  font28 = loadFont("OpenSans-28.vlw");
+  PFont  font24 = loadFont("OpenSans-24.vlw");
+  PFont  font18 = loadFont("OpenSans-18.vlw");
+  PFont  font10 = loadFont("OpenSans-10.vlw");
+
   active_rides = 0;
   active_costumers = 0;
   active_subscribers = 0;
@@ -70,45 +79,65 @@ void draw() {
   int lEdge = 20;
   int rEdge = width-20;
   int cInt = 150;
+
   float tBound = height-20;
 
   // Credits
-  fill(150);
-  textAlign(RIGHT);
-  textSize(14);
-  text("Sarah Kaufman", rEdge, 200); 
-  textSize(10);
-  text("Rudin Center for Transportation Policy", rEdge, 215);
-  textSize(14);
-  text("Jeff Ferzoco", rEdge, 235);
-  textSize(10);
-  text("linepointpath", rEdge, 250);
-  textSize(12);
-  text("with help from", rEdge, 275);
-  text("Juan Francisco Saldarriaga", rEdge, 290);
-  text("Chrys Wu", rEdge, 305);
-  text("Ekene Ijoema", rEdge, 320);
-  text("David Stolarsky", rEdge, 335);
-  text("Chrys Wu", rEdge, 350);
+  fill(0);
   textAlign(LEFT);
+  textFont(font18);
+  textSize(18);
+  fill(150);
+  text("Sarah Kaufman", lEdge+300, tBound-50); 
+  fill(150);
+  textFont(font10);
+  textSize(10);
+  text("Rudin Center for Transportation", lEdge+300, tBound-35);
+  text("NYU Wagner School", lEdge+300, tBound-20);
+  fill(0);
+  textFont(font18);
 
+  textSize(18);
+  fill(150);
+  text("Jeff Ferzoco", lEdge+480, tBound-50);
+  fill(150);
+  textFont(font10);
 
-
+  textSize(10);
+  text("linepointpath.com", lEdge+480, tBound-35);
+  textFont(font10);
+  textSize(10);
+  text("with lots of help from", lEdge+625, tBound-60);
+  text("Juan Francisco Saldarriaga", lEdge+625, tBound-45);
+  text("Ekene Ijoema", lEdge+625, tBound-30);
+  text("David Stolarsky", lEdge+625, tBound-15);
+  text("Chrys Wu", lEdge+625, tBound);
 
   //Color legend
-  textSize(20);
+  textAlign(LEFT);
+  textFont(font18);
+  textSize(18);
   fill(0, 0, 255);
-  text("Annual Users", lEdge, 100);
+  text("Annual Pass Holders", lEdge+60, tBound-150);
   fill(255, 158, 0);
-  text("Ticket Buyers", lEdge, 130);
-  textSize(14);
-  text("(1 or 7 day passes)", lEdge, 150);
+  stroke(0, 0, 255);
+  strokeWeight(1);
+  line(lEdge+10, tBound-155, lEdge+55, tBound-155);
+  text("Purchased a Ticket", lEdge+60, tBound-100);
+  textSize(10);
+  text("(1 or 7 day passes)", lEdge+60, tBound-90);
+  stroke(255, 158, 0);
+  strokeWeight(1);
+  line(lEdge+40, tBound-100, lEdge+55, tBound-100);
+  textAlign(LEFT);
 
   //Active rider bars
-  textSize(27);
+  textFont(font28);
+  textSize(28);
   fill(cInt);
-  text(active_rides+" riders", lEdge, (height-70)); // rides on screen now
-
+  text("Active Riders: "+ active_rides, lEdge, (tBound-50)); // rides on screen now
+  strokeWeight(1);
+  line(lEdge, tBound-80, rEdge, tBound-80);
 
   textSize(18);
   currentTime = float(frameCount)/totalAnimationFrames;
@@ -149,13 +178,13 @@ void draw() {
 }
 
 void keyPressed() {
- //code in draw should not be executed
- noLoop();
+  //code in draw should not be executed
+  noLoop();
 }
 
 void keyReleased() {
- //code in draw should be executed
- loop();
+  //code in draw should be executed
+  loop();
 }
 
 int getCurrentTime() {

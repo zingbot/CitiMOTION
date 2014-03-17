@@ -1,12 +1,12 @@
 float mapScreenWidth, mapScreenHeight;
-// float mapGeoLeft   = -74.05; 
-float mapGeoLeft   = -74.03;          
-//float mapGeoRight  =  -73.92;
-float mapGeoRight  =  -73.85;    
-//float mapGeoTop    =  40.775;
-float mapGeoTop    =  40.775;          
-//float mapGeoBottom =  40.67;     
-float mapGeoBottom =  40.67;
+float mapGeoLeft   = -74.04; 
+//float mapGeoLeft   = -74.03;          
+float mapGeoRight  =  -73.93;
+//float mapGeoRight  =  -73.85;    
+float mapGeoTop    =  40.775;
+//float mapGeoTop    =  40.775;          
+float mapGeoBottom =  40.67;     
+//float mapGeoBottom =  40.67;
 
 int totalAnimationFrames = 10800;
 int totalMinutes = 48*60;
@@ -27,8 +27,8 @@ Stations[] myStation;
 Rides[] myRide;
 
 void setup() {
-  size(int(1920*.75), int(1080*.75));
-  //size(1920, 1080);
+  //size(int(1920*.75), int(1080*.75));
+  size(800, 800);
   background(255);
   smooth();
   frameRate(24);
@@ -71,6 +71,7 @@ void draw() {
   int cInt = 150;
   float tBound = height-20;
 
+//Color legend
   textSize(20);
   fill(0, 0, 255);
   text("Annual Users", edge, 100);
@@ -79,11 +80,13 @@ void draw() {
   textSize(14);
   text("(1 or 7 day passes)", edge, 150);
 
+//Active rider bars
   textSize(27);
   fill(cInt);
   text(active_rides+" riders", edge, (height-70)); // rides on screen now
+  
+  
   textSize(18);
-
   currentTime = float(frameCount)/totalAnimationFrames;
   currentHour = floor(48*currentTime)%12;
   currentMinutes = floor(currentTime*totalMinutes)%60;

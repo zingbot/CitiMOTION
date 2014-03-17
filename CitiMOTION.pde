@@ -178,12 +178,10 @@ void draw() {
 }
 
 void keyPressed() {
-  //code in draw should not be executed
   noLoop();
 }
 
 void keyReleased() {
-  //code in draw should be executed
   loop();
 }
 

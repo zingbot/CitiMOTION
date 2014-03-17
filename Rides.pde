@@ -19,6 +19,9 @@ class Rides {
   int start_seconds;
   float percentTraveled;
   float travelled;
+  int activeRides;
+  int costumers;
+  int subscribers;
 
 
   //Constructor*****************************
@@ -32,19 +35,26 @@ class Rides {
 
   //Methods*********************************
   void plotRides() {
+    costumers = 0;
+    subscribers = 0;
     PVector currentPosition = new PVector(start.x, start.y);
     fill(0, 0, 0, 10);
     if (getCurrentTime()>start_seconds && getCurrentTime()<(start_seconds+trip_duration)) {
+      activeRides = 1;
       travelled = getCurrentTime()-start_seconds;
       percentTraveled = travelled/trip_duration;
       int displayTime = getCurrentTime();     
       //origin and destination rings
       if (user_type.equals("Customer")) {
+        costumers = 1;
+        subscribers = 0;
         noFill();
         strokeWeight(4);
         stroke(255, 158, 0, 50);
       }
       else {
+        costumers = 0;
+        subscribers = 1;
         noFill();
         strokeWeight(2);
         stroke(0, 0, 255, 50);
@@ -74,6 +84,7 @@ class Rides {
       line(start.x, start.y, end.x, end.y);
     }
     else {
+      activeRides = 0;
     }
   }
 }

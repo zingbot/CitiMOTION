@@ -17,6 +17,9 @@ int newCurrentHour;
 String newCurrentMinutes;
 String ampm;
 String currentDate;
+int active_rides;
+int active_costumers;
+int active_subscribers;
 
 Table myTable;
 
@@ -44,11 +47,17 @@ void setup() {
 
 void draw() {
   background(255);
+  active_rides = 0;
+  active_costumers = 0;
+  active_subscribers = 0;
   for (int i=0; i<myStation.length;i++) {
     myStation[i].plotStations();
   }
   for (int i=0; i<myRide.length;i++) {
     myRide[i].plotRides();
+    active_costumers = active_costumers + myRide[i].costumers;
+    active_rides = active_rides + myRide[i].activeRides;
+    active_subscribers = active_subscribers + myRide[i].subscribers;
   }
   if (frameCount > totalAnimationFrames) {
     exit();
@@ -61,13 +70,11 @@ void draw() {
   int edge = 20;
   int cInt = 150;
   float tBound = height-20;
-  float numSubscribers = (height - random(120, 200));
-  float numCustomers = (height - random(120, 175));
 
 
   textSize(27);
   fill(cInt);
-  text("2200 riders", edge, (height-70)); // rides on screen now
+  text(active_rides+" riders", edge, (height-70)); // rides on screen now
   textSize(18);
 
   currentTime = float(frameCount)/totalAnimationFrames;
@@ -92,14 +99,7 @@ void draw() {
     newCurrentHour = currentHour;
   }
 
-  text(newCurrentHour, edge, height-600);
-  text(currentMinutes, edge, height-500);
-  text(ampm, edge, height-400);
-  text(currentDate, edge, height-350);
-
-
-  text(currentDate+" "+newCurrentHour+":"+nf(currentMinutes,2)+ampm, edge, (height - 40)); // date in timeline
-  //text("October 31st at 4:30pm", edge, (height - 40)); // date in timeline
+  text(currentDate+" "+newCurrentHour+":"+nf(currentMinutes, 2)+ampm, edge, (height - 40)); // date in timeline
   stroke(cInt);
   strokeWeight(1);
   line(edge, tBound, tBound, tBound); // timeline base
@@ -109,9 +109,9 @@ void draw() {
   // Activity bars: measure of the number of riders on screen
   strokeWeight(20);
   stroke(0, 0, 255);
-  line(edge+10, height-120, edge+10, numSubscribers);
+  line(edge+10, height-120, edge+10, height-120-active_subscribers/4);
   stroke(255, 183, 0);
-  line(edge+35, height-120, edge+35, numCustomers);
+  line(edge+35, height-120, edge+35, height-120-active_costumers/4);
 }
 
 

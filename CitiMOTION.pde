@@ -54,6 +54,7 @@ void draw() {
   PFont  font28 = loadFont("OpenSans-28.vlw");
   PFont  font24 = loadFont("OpenSans-24.vlw");
   PFont  font18 = loadFont("OpenSans-18.vlw");
+  PFont  font12 = loadFont("OpenSans-12.vlw");
   PFont  font10 = loadFont("OpenSans-10.vlw");
 
   active_rides = 0;
@@ -88,30 +89,36 @@ void draw() {
   textFont(font18);
   textSize(18);
   fill(150);
-  text("Sarah Kaufman", lEdge+300, tBound-50); 
+  text("Sarah Kaufman", lEdge+480, tBound-50); 
   fill(150);
   textFont(font10);
   textSize(10);
-  text("Rudin Center for Transportation", lEdge+300, tBound-35);
-  text("NYU Wagner School", lEdge+300, tBound-20);
+  text("Rudin Center for Transportation", lEdge+480, tBound-35);
+  text("NYU Wagner School", lEdge+480, tBound-20);
   fill(0);
   textFont(font18);
 
   textSize(18);
   fill(150);
-  text("Jeff Ferzoco", lEdge+480, tBound-50);
+  text("Jeff Ferzoco", lEdge+300, tBound-50);
   fill(150);
   textFont(font10);
 
   textSize(10);
-  text("linepointpath.com", lEdge+480, tBound-35);
+  text("linepointpath.com", lEdge+300, tBound-35);
+
+  textFont(font18);
+  textSize(18);
+  text("Juan F. Saldarriaga", lEdge+300, tBound-15);
+
   textFont(font10);
   textSize(10);
-  text("with lots of help from", lEdge+625, tBound-60);
-  text("Juan Francisco Saldarriaga", lEdge+625, tBound-45);
-  text("Ekene Ijoema", lEdge+625, tBound-30);
-  text("David Stolarsky", lEdge+625, tBound-15);
-  text("Chrys Wu", lEdge+625, tBound);
+  text("with lots of help from", lEdge+650, tBound-50);
+  textFont(font12);
+  textSize(12);
+  text("Ekene Ijoema", lEdge+650, tBound-35);
+  text("David Stolarsky", lEdge+650, tBound-20);
+  text("Chrys Wu", lEdge+650, tBound-5);
 
   //Color legend
   textAlign(LEFT);

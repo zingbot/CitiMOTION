@@ -71,6 +71,13 @@ void draw() {
   int cInt = 150;
   float tBound = height-20;
 
+  textSize(20);
+  fill(0, 0, 255);
+  text("Annual Users", edge, 100);
+  fill(255, 158, 0);
+  text("Ticket Buyers", edge, 130);
+  textSize(14);
+  text("(1 or 7 day passes)", edge, 150);
 
   textSize(27);
   fill(cInt);
@@ -100,11 +107,11 @@ void draw() {
   }
 
   text(currentDate+" "+newCurrentHour+":"+nf(currentMinutes, 2)+ampm, edge, (height - 40)); // date in timeline
-  stroke(cInt);
-  strokeWeight(1);
-  line(edge, tBound, tBound, tBound); // timeline base
-  strokeWeight(3);
-  line(frameCount-edge, tBound-5, frameCount-edge, tBound+5); //timeline ticker (interactive slider?)
+  //  stroke(cInt);
+  //  strokeWeight(1);
+  //  line(edge, tBound, tBound, tBound); // timeline base
+  //  strokeWeight(3);
+  //  line(frameCount-edge, tBound-5, frameCount-edge, tBound+5); //timeline ticker (interactive slider?)
 
   // Activity bars: measure of the number of riders on screen
   strokeWeight(20);

@@ -141,9 +141,10 @@ void draw() {
   strokeWeight(1);
   stroke(0, 0, 255, 50);
   noFill();
+  
   //destination ring
   stroke(255, 158, 0);
-  ellipse(rEdge-29, tBound-120, 30, 30);
+  ellipse(rEdge-29, tBound-120, 32, 32);
   stroke(0, 0, 255);
   ellipse(rEdge-29, tBound-120, 25, 25);
   //station ring

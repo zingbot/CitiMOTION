@@ -72,7 +72,7 @@ class Rides {
         fill(0, 0, 255, 100);
       }
       ellipse(currentPosition.x, currentPosition.y, 3.5, 3.5);
-      // println(percentTraveled);
+      
       //Line between the stations
       if (user_type.equals("Customer")) {
         stroke(255, 158, 0, 100);

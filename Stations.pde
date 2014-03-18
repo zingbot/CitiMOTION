@@ -50,6 +50,18 @@ class Stations {
       line(lon, lat, lon-45, lat+30);
       //text(station_name, width-20, height-550);
     } 
+      if (station_name.equals("Atlantic Ave & Fort Greene Pl")) {
+      textAlign(LEFT);
+      text("Barclays Center", lon-70, lat+45);
+      line(lon, lat, lon-25, lat+30);
+      //text(station_name, width-20, height-550);
+    } 
+      if (station_name.equals("S 3 St & Bedford Ave")) {
+      textAlign(LEFT);
+      text("Williamsburg", lon+50, lat-25);
+      line(lon, lat, lon+50, lat-20);
+      //text(station_name, width-20, height-550);
+    } 
     if (dist(mouseX, mouseY, lon, lat) < 5) {
       textAlign(LEFT);
       text(station_name, lon+10, lat-10);

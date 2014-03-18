@@ -80,7 +80,6 @@ void draw() {
   int lEdge = 20;
   int rEdge = width-20;
   int cInt = 150;
-
   float tBound = height-20;
 
   // Credits
@@ -137,6 +136,26 @@ void draw() {
   strokeWeight(1);
   line(lEdge+40, tBound-100, lEdge+55, tBound-100);
   textAlign(LEFT);
+
+  //Circle Legend
+  strokeWeight(1);
+  stroke(0, 0, 255, 50);
+  noFill();
+  //destination ring
+  stroke(255, 158, 0);
+  ellipse(rEdge-29, tBound-120, 30, 30);
+  stroke(0, 0, 255);
+  ellipse(rEdge-29, tBound-120, 25, 25);
+  //station ring
+  strokeWeight(2);
+  stroke(100, 50);
+  ellipse(rEdge-29, tBound-120, 16, 16);
+  line(rEdge-29, tBound-120, rEdge-70, tBound-120);
+  fill(150);
+  text("Citibike", rEdge-105, tBound-120);
+  text("Station", rEdge-105, tBound-110);
+  text("Destination", rEdge-105, tBound-140);
+  line(rEdge-50, tBound-140, rEdge-40, tBound-130);
 
   //Active rider bars
   textFont(font28);

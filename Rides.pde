@@ -43,21 +43,24 @@ class Rides {
       activeRides = 1;
       travelled = getCurrentTime()-start_seconds;
       percentTraveled = travelled/trip_duration;
-      int displayTime = getCurrentTime();     
+      int displayTime = getCurrentTime();  
+      
       //origin and destination rings
       if (user_type.equals("Customer")) {
         costumers = 1;
         subscribers = 0;
-        noFill();
-        strokeWeight(4);
-        stroke(255, 158, 0, 20);
+        fill(255,158,0,20);
+//        noFill();
+//        strokeWeight(4);
+//        stroke(255, 158, 0, 20);
       }
       else {
         costumers = 0;
         subscribers = 1;
-        noFill();
-        strokeWeight(2);
-        stroke(0, 0, 255, 20);
+        fill(0,0,255,20);
+//        noFill();
+//        strokeWeight(2);
+//        stroke(0, 0, 255, 20);
       }
       //ellipse(start.x, start.y, 12, 12);
       ellipse(end.x, end.y, 15, 15);

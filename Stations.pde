@@ -21,24 +21,24 @@ class Stations {
   //Methods**************************
   void plotStations() {
 
-    //PFont  font10 = loadFont("OpenSans-10.vlw");
     noFill();
     //fill(200);
     stroke(100, 50);
     strokeWeight(1);
     //noStroke();
     ellipse(lon, lat, 6, 6);
-    noStroke();
+    //noStroke();
 
     //Landmarks
+
     fill(70);
     //textFont(font10);
     strokeWeight(1);
     textSize(10);
     if (station_name.equals("Pershing Square N")) {
       textAlign(LEFT);
-      text("Grand Central", lon+100, lat+50);
-      line(lon, lat, lon+95, lat+45);
+      text("Grand Central", lon+70, lat+50);
+      line(lon, lat, lon+65, lat+45);
       //text(station_name, width-20, height-550);
     } 
     if (station_name.equals("E 17 St & Broadway")) {
@@ -55,8 +55,8 @@ class Stations {
     } 
     if (station_name.equals("Atlantic Ave & Fort Greene Pl")) {
       textAlign(LEFT);
-      text("Barclays Center", lon-70, lat+45);
-      line(lon, lat, lon-25, lat+30);
+      text("Barclays Center", lon-70, lat+25);
+      line(lon, lat, lon-25, lat+20);
       //text(station_name, width-20, height-550);
     } 
     if (station_name.equals("Central Park S & 6 Ave")) {
@@ -68,7 +68,7 @@ class Stations {
     if (station_name.equals("Pearl St & Anchorage Pl")) {
       textAlign(LEFT);
       text("Dumbo", lon-140, lat+65);
-      line(lon-10, lat+5, lon-105, lat+55);
+      line(lon-30, lat+10, lon-105, lat+55);
       //text(station_name, width-20, height-550);
     } 
     if (station_name.equals("S 3 St & Bedford Ave")) {

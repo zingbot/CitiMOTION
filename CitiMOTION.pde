@@ -1,9 +1,9 @@
 float mapScreenWidth, mapScreenHeight;
 //full map
 float mapGeoLeft   = -74.04;       
-float mapGeoRight  =  -73.92;
-float mapGeoTop    =  40.775;
-float mapGeoBottom =  40.66;     
+float mapGeoRight  =  -73.94;
+float mapGeoTop    =  40.778;
+float mapGeoBottom =  40.675;     
 
 //bk zoom
 //float mapGeoLeft   = -74.000130;       
@@ -63,7 +63,8 @@ void setup() {
 
 
 void draw() {
-//saveFrame("movie/citibike-####.png");
+  //delay(2000);
+  saveFrame("movie/citibike-####.png");
   background(255);
   PFont  font40 = loadFont("OpenSans-40.vlw");
   PFont  font28 = loadFont("OpenSans-28.vlw");
@@ -105,53 +106,28 @@ void draw() {
   // Credits
   fill(0);
   textAlign(LEFT);
-  textFont(font12);
-  textSize(12);
-  fill(150);
-  text("Sarah Kaufman", lEdge+480, tBound-50); 
-  fill(150);
-  textFont(font10);
-  textSize(10);
-  text("Rudin Center for Transportation", lEdge+480, tBound-35);
-  text("NYU Wagner School", lEdge+480, tBound-20);
-  fill(0);
-  textFont(font12);
-
-  textSize(12);
-  fill(150);
-  text("Jeff Ferzoco", lEdge+350, tBound-50);
-  fill(150);
   textFont(font10);
 
   textSize(10);
-  text("linepointpath.com", lEdge+350, tBound-35);
+  fill(150);
+  text("Credits: Jeff Ferzoco (linepointpath.com) // Juan F. Saldarriaga // Sarah Kaufman (Rudin Center for Transportation, NY Wagner School)", lEdge+0, tBound);
+  text("and help from Ekene Ijoema, David Stolarsky, and Chrys Wu ", lEdge+40, tBound+12);
+  fill(150);
 
-  textFont(font12);
-  textSize(12);
-  text("Juan F. Saldarriaga", lEdge+350, tBound-15);
 
-  textFont(font10);
-  textSize(10);
-  text("with lots of help from", lEdge+650, tBound-50);
-  textFont(font12);
-  textSize(12);
-  text("Ekene Ijoema", lEdge+650, tBound-35);
-  text("David Stolarsky", lEdge+650, tBound-20);
-  text("Chrys Wu", lEdge+650, tBound-5);
 
   //Color legend
   textAlign(LEFT);
-  textFont(font18);
-  textSize(18);
+  textFont(font12);
+  textSize(12);
   fill(0, 0, 255);
-  text("Annual Pass Holders", lEdge+60, tBound-150);
+  text("Annual Pass Holders", lEdge+60, tBound-120);
   fill(255, 158, 0);
   stroke(0, 0, 255);
   strokeWeight(1);
-  line(lEdge+10, tBound-155, lEdge+55, tBound-155);
+  line(lEdge+10, tBound-125, lEdge+55, tBound-125);
   text("Purchased a Ticket", lEdge+60, tBound-100);
-  textSize(10);
-  text("(1 or 7 day passes)", lEdge+60, tBound-90);
+  text("(1 or 7 day passes)", lEdge+60, tBound-85);
   stroke(255, 158, 0);
   strokeWeight(1);
   line(lEdge+40, tBound-100, lEdge+55, tBound-100);
@@ -160,31 +136,50 @@ void draw() {
   //Circle Legend
   strokeWeight(1);
   stroke(0, 0, 255, 50);
-  //noFill();
+  fill(150);
+  text("Legend", rEdge-70, tBound-550);
+  noFill();
+  stroke(150, 50);
+  rect(rEdge-125, tBound-540, 200, 130);
+  fill(0, 0, 255);
 
-  //destination ring
-  stroke(255, 158, 0);
-  ellipse(rEdge-29, tBound-120, 22, 22);
-  stroke(0, 0, 255);
-  ellipse(rEdge-29, tBound-120, 22, 22);
-  //station ring
+  text("Annual Pass", rEdge-100, tBound-476);
+  fill(0, 0, 255, 50);
+  ellipse(rEdge-10, tBound-480, 22, 22);
+  fill(255, 158, 0);
+  text("Bought Ticket", rEdge-109, tBound-435);
+  fill(255, 158, 0, 50);
+  ellipse(rEdge-10, tBound-440, 22, 22);
+
+  //CitibikeStation
+  noFill();
   strokeWeight(2);
   stroke(100, 50);
-  ellipse(rEdge-29, tBound-120, 16, 16);
-  line(rEdge-29, tBound-120, rEdge-70, tBound-120);
+  ellipse(rEdge-10, tBound-519, 11, 11);
   fill(150);
-  text("Citibike", rEdge-105, tBound-120);
-  text("Station", rEdge-105, tBound-110);
-  text("Destination", rEdge-105, tBound-140);
-  line(rEdge-50, tBound-140, rEdge-40, tBound-130);
+  text("Citibike Station", rEdge-115, tBound-515);
+  //line(rEdge-29, tBound-520, rEdge-60, tBound-520);
+  //line(rEdge-40, tBound-540, rEdge-30, tBound-530);
+
+//Title
+textFont(font24);
+textSize(24);
+text("Citibike Rides, September 17th and 18th, 2013", 10,30);
+  line(0, 40, width, 40);
 
   //Active rider bars
   textFont(font28);
   textSize(28);
-  fill(cInt);
-  text("Active Riders: "+ active_rides, lEdge, (tBound-50)); // rides on screen now
+  fill (200);
+  text("Active", lEdge, tBound-700);
+  text("Riders", lEdge, tBound-670);
+  fill(150);
+  textAlign(LEFT);
+  textFont(fontb36);
+  textSize(36);
+  text(active_rides, lEdge, (tBound-630)); // rides on screen now
   strokeWeight(1);
-  line(lEdge, tBound-80, rEdge, tBound-80);
+  line(lEdge, tBound-12, rEdge, tBound-12);
 
   textSize(18);
   currentTime = float(frameCount)/totalAnimationFrames;
@@ -209,9 +204,10 @@ void draw() {
   else {
     newCurrentHour = currentHour;
   }
-  //textFont(fontb24);
-  textSize(24);
-  text(currentDate+" "+newCurrentHour+":"+nf(currentMinutes, 2)+ampm, lEdge, (height - 40)); // date in timeline
+
+  textSize(36);
+  fill(150);
+  text(currentDate+" "+newCurrentHour+":"+nf(currentMinutes, 2)+ampm, lEdge, (height - 60)); // date in timeline
   //  stroke(cInt);
   //  strokeWeight(1);
   //  line(edge, tBound, tBound, tBound); // timeline base
@@ -219,11 +215,12 @@ void draw() {
   //  line(frameCount-edge, tBound-5, frameCount-edge, tBound+5); //timeline ticker (interactive slider?)
 
   // Activity bars: measure of the number of riders on screen
-  strokeWeight(20);
+  strokeWeight(10);
   stroke(0, 0, 255);
-  line(lEdge+10, height-120, lEdge+10, height-120-active_subscribers/4);
+  line(lEdge+10, height-120, lEdge+10, height-120-active_subscribers/2);
   stroke(255, 183, 0);
-  line(lEdge+35, height-120, lEdge+35, height-120-active_costumers/4);
+  line(lEdge+25, height-120, lEdge+25, height-120-active_costumers/2);
+  textFont(font10);
 }
 
 void keyPressed() {

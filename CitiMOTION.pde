@@ -1,12 +1,27 @@
 float mapScreenWidth, mapScreenHeight;
-float mapGeoLeft   = -74.04; 
-//float mapGeoLeft   = -74.03;          
+//full map
+float mapGeoLeft   = -74.04;       
 float mapGeoRight  =  -73.92;
-//float mapGeoRight  =  -73.85;    
 float mapGeoTop    =  40.775;
-//float mapGeoTop    =  40.775;          
 float mapGeoBottom =  40.66;     
+
+//bk zoom
+//float mapGeoLeft   = -74.000130;       
+//float mapGeoRight  =  -73.959618;
+//float mapGeoTop    =  40.705367;
+//float mapGeoBottom =  40.684673; 
+
+//// Midtown Zoom
+//float mapGeoLeft   = -74.015691;       
+//float mapGeoRight  =  -73.95262;
+//float mapGeoTop    =  40.770018;
+//float mapGeoBottom =  40.732168; 
+
+//float mapGeoLeft   = -74.03; 
+//float mapGeoRight  =  -73.85;    
+//float mapGeoTop    =  40.775;          
 //float mapGeoBottom =  40.67;
+
 
 int totalAnimationFrames = 10800;
 int totalMinutes = 48*60;
@@ -40,7 +55,6 @@ void setup() {
 
   textFont(font40);
   textSize(40);
-
   mapScreenWidth = width;
   mapScreenHeight = height;
   getStationInfo();
@@ -49,6 +63,7 @@ void setup() {
 
 
 void draw() {
+//saveFrame("movie/citibike-####.png");
   background(255);
   PFont  font40 = loadFont("OpenSans-40.vlw");
   PFont  font28 = loadFont("OpenSans-28.vlw");
@@ -56,6 +71,11 @@ void draw() {
   PFont  font18 = loadFont("OpenSans-18.vlw");
   PFont  font12 = loadFont("OpenSans-12.vlw");
   PFont  font10 = loadFont("OpenSans-10.vlw");
+  PFont  fontb24 = loadFont("OpenSans-Extrabold-24.vlw");
+  PFont  fontb36 = loadFont("OpenSans-Extrabold-36.vlw");
+  PFont  fontb48 = loadFont("OpenSans-Extrabold-48.vlw");
+
+
 
   active_rides = 0;
   active_costumers = 0;
@@ -85,8 +105,8 @@ void draw() {
   // Credits
   fill(0);
   textAlign(LEFT);
-  textFont(font18);
-  textSize(18);
+  textFont(font12);
+  textSize(12);
   fill(150);
   text("Sarah Kaufman", lEdge+480, tBound-50); 
   fill(150);
@@ -95,20 +115,20 @@ void draw() {
   text("Rudin Center for Transportation", lEdge+480, tBound-35);
   text("NYU Wagner School", lEdge+480, tBound-20);
   fill(0);
-  textFont(font18);
+  textFont(font12);
 
-  textSize(18);
+  textSize(12);
   fill(150);
-  text("Jeff Ferzoco", lEdge+300, tBound-50);
+  text("Jeff Ferzoco", lEdge+350, tBound-50);
   fill(150);
   textFont(font10);
 
   textSize(10);
-  text("linepointpath.com", lEdge+300, tBound-35);
+  text("linepointpath.com", lEdge+350, tBound-35);
 
-  textFont(font18);
-  textSize(18);
-  text("Juan F. Saldarriaga", lEdge+300, tBound-15);
+  textFont(font12);
+  textSize(12);
+  text("Juan F. Saldarriaga", lEdge+350, tBound-15);
 
   textFont(font10);
   textSize(10);
@@ -140,13 +160,13 @@ void draw() {
   //Circle Legend
   strokeWeight(1);
   stroke(0, 0, 255, 50);
-  noFill();
-  
+  //noFill();
+
   //destination ring
   stroke(255, 158, 0);
-  ellipse(rEdge-29, tBound-120, 32, 32);
+  ellipse(rEdge-29, tBound-120, 22, 22);
   stroke(0, 0, 255);
-  ellipse(rEdge-29, tBound-120, 25, 25);
+  ellipse(rEdge-29, tBound-120, 22, 22);
   //station ring
   strokeWeight(2);
   stroke(100, 50);
@@ -177,10 +197,11 @@ void draw() {
     ampm = "pm";
   }
   if (floor(48*currentTime)>23) {
-    currentDate = "November 1st";
+    //currentDate = "November 1st";
+    currentDate = "9/17/13 at";
   }
   else {
-    currentDate = "October 31st";
+    currentDate = "9/18/13 at";
   }
   if (currentHour == 0) {
     newCurrentHour = 12;
@@ -188,7 +209,8 @@ void draw() {
   else {
     newCurrentHour = currentHour;
   }
-
+  //textFont(fontb24);
+  textSize(24);
   text(currentDate+" "+newCurrentHour+":"+nf(currentMinutes, 2)+ampm, lEdge, (height - 40)); // date in timeline
   //  stroke(cInt);
   //  strokeWeight(1);
@@ -239,7 +261,8 @@ void getStationInfo() {
 
 void getTripInfo() {
   //myTable = loadTable("103113latlonpairsfinalTENROUTE.csv");
-  myTable = loadTable("103113latlonpairsfinal.csv");
+  myTable = loadTable("917n1813latlonpairs.csv");
+  //myTable = loadTable("103113latlonpairsfinal.csv");
   float startLon;
   float startLat;
   float endLon;

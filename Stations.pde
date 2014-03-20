@@ -23,14 +23,15 @@ class Stations {
 
     //PFont  font10 = loadFont("OpenSans-10.vlw");
     noFill();
-    //fill(150);
+    //fill(200);
     stroke(100, 50);
-    strokeWeight(2);
-    ellipse(lon, lat, 8, 8);
+    strokeWeight(1);
     //noStroke();
-    
+    ellipse(lon, lat, 6, 6);
+    noStroke();
+
     //Landmarks
-    fill(150);
+    fill(70);
     //textFont(font10);
     strokeWeight(1);
     textSize(10);
@@ -56,6 +57,12 @@ class Stations {
       textAlign(LEFT);
       text("Barclays Center", lon-70, lat+45);
       line(lon, lat, lon-25, lat+30);
+      //text(station_name, width-20, height-550);
+    } 
+    if (station_name.equals("Central Park S & 6 Ave")) {
+      textAlign(LEFT);
+      text("Central Park South", lon+30, lat-30);
+      line(lon, lat, lon+25, lat-30);
       //text(station_name, width-20, height-550);
     } 
     if (station_name.equals("Pearl St & Anchorage Pl")) {
@@ -84,6 +91,10 @@ class Stations {
     } 
     if (dist(mouseX, mouseY, lon, lat) < 5) {
       textAlign(LEFT);
+      noStroke();
+      fill(255);
+      rect(lon+5, lat-20, 150, 15);
+      fill(0);
       text(station_name, lon+10, lat-10);
       //text(station_name, width-20, height-550);
     } 

@@ -22,6 +22,7 @@ class Rides {
   int activeRides;
   int costumers;
   int subscribers;
+        int dot_opacity = 15;
 
 
   //Constructor*****************************
@@ -44,26 +45,28 @@ class Rides {
       travelled = getCurrentTime()-start_seconds;
       percentTraveled = travelled/trip_duration;
       int displayTime = getCurrentTime();  
-      
+
       //origin and destination rings
       if (user_type.equals("Customer")) {
         costumers = 1;
         subscribers = 0;
-        fill(255,158,0,20);
-//        noFill();
-//        strokeWeight(4);
-//        stroke(255, 158, 0, 20);
+        fill(255, 158, 0, dot_opacity);
+        //        noFill();
+        //        strokeWeight(4);
+        //        stroke(255, 158, 0, 20);
       }
       else {
         costumers = 0;
         subscribers = 1;
-        fill(0,0,255,20);
-//        noFill();
-//        strokeWeight(2);
-//        stroke(0, 0, 255, 20);
+        fill(0, 0, 255, dot_opacity);
+        //        noFill();
+        //        strokeWeight(2);
+        //        stroke(0, 0, 255, 20);
       }
-      //ellipse(start.x, start.y, 12, 12);
-      ellipse(end.x, end.y, 15, 15);
+      //noStroke();
+      ellipse(start.x, start.y, 12, 12);
+      //ellipse(end.x, end.y, 15, 15);
+
 
       //Citibike dot
       currentPosition = PVector.lerp(start, end, percentTraveled);
@@ -74,8 +77,8 @@ class Rides {
       else {
         fill(0, 0, 255, 100);
       }
-      ellipse(currentPosition.x, currentPosition.y, 3.5, 3.5);
-      
+      ellipse(currentPosition.x, currentPosition.y, 2, 2);
+
       //Line between the stations
       if (user_type.equals("Customer")) {
         stroke(255, 158, 0, 100);
@@ -83,7 +86,7 @@ class Rides {
       else {
         stroke(0, 0, 200, 100);
       }
-      strokeWeight(.25);
+      strokeWeight(.15);
       line(start.x, start.y, end.x, end.y);
     }
     else {

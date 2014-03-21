@@ -217,9 +217,9 @@ text("Citibike Rides, September 17th and 18th, 2013", 10,30);
   // Activity bars: measure of the number of riders on screen
   strokeWeight(10);
   stroke(0, 0, 255);
-  line(lEdge+10, height-120, lEdge+10, height-120-active_subscribers/2);
+  line(lEdge+10, height-120, lEdge+10, height-120-active_subscribers/4);
   stroke(255, 183, 0);
-  line(lEdge+25, height-120, lEdge+25, height-120-active_costumers/2);
+  line(lEdge+25, height-120, lEdge+25, height-120-active_costumers/4);
   textFont(font10);
 }
 

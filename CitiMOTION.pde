@@ -142,12 +142,16 @@ void draw() {
   stroke(150, 50);
   rect(rEdge-125, tBound-540, 200, 130);
   fill(0, 0, 255);
+textAlign(RIGHT);
+  text("Annual Rider", rEdge-30, tBound-480);
+    text("Pickup", rEdge-30, tBound-468);
 
-  text("Annual Pass", rEdge-100, tBound-476);
   fill(0, 0, 255, 50);
   ellipse(rEdge-10, tBound-480, 22, 22);
   fill(255, 158, 0);
-  text("Bought Ticket", rEdge-109, tBound-435);
+  text("Ticket Rider", rEdge-30, tBound-439);
+      text("Pickup", rEdge-30, tBound-428);
+
   fill(255, 158, 0, 50);
   ellipse(rEdge-10, tBound-440, 22, 22);
 
@@ -157,14 +161,15 @@ void draw() {
   stroke(100, 50);
   ellipse(rEdge-10, tBound-519, 11, 11);
   fill(150);
-  text("Citibike Station", rEdge-115, tBound-515);
+  text("Citibike Station", rEdge-30, tBound-515);
   //line(rEdge-29, tBound-520, rEdge-60, tBound-520);
   //line(rEdge-40, tBound-540, rEdge-30, tBound-530);
+textAlign(LEFT);
 
-//Title
-textFont(font24);
-textSize(24);
-text("Citibike Rides, September 17th and 18th, 2013", 10,30);
+  //Title
+  textFont(font24);
+  textSize(24);
+  text("Citibike Rides, September 17th and 18th, 2013", 10, 30);
   line(0, 40, width, 40);
 
   //Active rider bars
@@ -174,12 +179,13 @@ text("Citibike Rides, September 17th and 18th, 2013", 10,30);
   text("Active", lEdge, tBound-700);
   text("Riders", lEdge, tBound-670);
   fill(150);
-  textAlign(LEFT);
+  textAlign(RIGHT);
   textFont(fontb36);
   textSize(36);
-  text(active_rides, lEdge, (tBound-630)); // rides on screen now
+  text(active_rides, lEdge+80, (tBound-630)); // rides on screen now
   strokeWeight(1);
   line(lEdge, tBound-12, rEdge, tBound-12);
+  textAlign(LEFT);
 
   textSize(18);
   currentTime = float(frameCount)/totalAnimationFrames;
@@ -193,10 +199,10 @@ text("Citibike Rides, September 17th and 18th, 2013", 10,30);
   }
   if (floor(48*currentTime)>23) {
     //currentDate = "November 1st";
-    currentDate = "9/17/13 at";
+    currentDate = "9/18/13 at";
   }
   else {
-    currentDate = "9/18/13 at";
+    currentDate = "9/17/13 at";
   }
   if (currentHour == 0) {
     newCurrentHour = 12;
@@ -215,11 +221,19 @@ text("Citibike Rides, September 17th and 18th, 2013", 10,30);
   //  line(frameCount-edge, tBound-5, frameCount-edge, tBound+5); //timeline ticker (interactive slider?)
 
   // Activity bars: measure of the number of riders on screen
-  strokeWeight(10);
+  stroke(150);
+  strokeWeight(1);
+  line(lEdge, height-642, lEdge+80, height-642);
+  strokeWeight(20);
+  stroke(0, 0, 255, 10);
+  line(lEdge+10, height-120, lEdge+10, height-625);
   stroke(0, 0, 255);
   line(lEdge+10, height-120, lEdge+10, height-120-active_subscribers/4);
+  stroke(255, 183, 0, 10);
+    line(lEdge+35, height-120, lEdge+35, height-625);
   stroke(255, 183, 0);
-  line(lEdge+25, height-120, lEdge+25, height-120-active_costumers/4);
+
+  line(lEdge+35, height-120, lEdge+35, height-120-active_costumers/4);
   textFont(font10);
 }
 

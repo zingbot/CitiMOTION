@@ -33,7 +33,7 @@ class Stations {
 
     fill(70);
     //textFont(font10);
-    strokeWeight(1);
+    strokeWeight(2);
     textSize(10);
     if (station_name.equals("Pershing Square N")) {
       textAlign(LEFT);

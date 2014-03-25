@@ -22,7 +22,8 @@ class Rides {
   int activeRides;
   int costumers;
   int subscribers;
-        int dot_opacity = 20;
+  int dot_opacity = 20;
+  int mapped;
 
 
   //Constructor*****************************
@@ -36,6 +37,7 @@ class Rides {
 
   //Methods*********************************
   void plotRides() {
+    mapped = 0;
     costumers = 0;
     subscribers = 0;
     PVector currentPosition = new PVector(start.x, start.y);
@@ -91,6 +93,12 @@ class Rides {
     }
     else {
       activeRides = 0;
+    }
+    if (getCurrentTime()>start_seconds) {
+      mapped = 1;
+    }
+    else {
+      mapped = 0;
     }
   }
 }

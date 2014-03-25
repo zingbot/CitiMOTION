@@ -36,6 +36,7 @@ String currentDate;
 int active_rides;
 int active_costumers;
 int active_subscribers;
+int plotted;
 
 Table myTable;
 
@@ -63,6 +64,7 @@ void draw() {
   //delay(20);
   saveFrame("movie/citibike-####.png");
   background(255);
+  smooth();
   image(backgroundMap, 0, 0, mapScreenWidth, mapScreenHeight);
 
   PFont  font40 = loadFont("Archer-Book-40.vlw");
@@ -82,6 +84,7 @@ void draw() {
   active_rides = 0;
   active_costumers = 0;
   active_subscribers = 0;
+  plotted = 0;
   for (int i=0; i<myStation.length;i++) {
     myStation[i].plotStations();
   }
@@ -90,7 +93,9 @@ void draw() {
     active_costumers = active_costumers + myRide[i].costumers;
     active_rides = active_rides + myRide[i].activeRides;
     active_subscribers = active_subscribers + myRide[i].subscribers;
+    plotted = plotted + myRide[i].mapped;
   }
+  println(plotted+" bike rides plotted.");
   if (frameCount > totalAnimationFrames) {
     exit();
   }
@@ -191,7 +196,7 @@ void draw() {
   textAlign(RIGHT);
   textFont(fontb36);
   textSize(36);
-  fill(0,0,255);
+  fill(0, 0, 255);
   text(active_rides, lEdge+80, (tBound-630)); // rides on screen now
   strokeWeight(1);
   line(lEdge, tBound-12, rEdge, tBound-12);
@@ -320,13 +325,13 @@ void getTripInfo() {
       startMinutes = 60*(int(hour2[0]))+int(hour2[1]);
       date2 = split(date, "/");
       startDay = int(date2[1]); 
-      if (startDay == 31) {
+      if (startDay == 17) {
         start_day = 0;
       }
       else {
         start_day = 1;
       }
-      startSeconds = startMinutes*60+start_day*24*60;
+      startSeconds = startMinutes*60+start_day*24*60*60;
       myRide[i-1] = new Rides(startLon, startLat, endLon, endLat, tripDuration, startTime, startSeconds, userType);
     }
     else {

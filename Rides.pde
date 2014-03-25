@@ -22,7 +22,7 @@ class Rides {
   int activeRides;
   int costumers;
   int subscribers;
-        int dot_opacity = 15;
+        int dot_opacity = 20;
 
 
   //Constructor*****************************
@@ -72,12 +72,12 @@ class Rides {
       currentPosition = PVector.lerp(start, end, percentTraveled);
       noStroke();
       if (user_type.equals("Customer")) {
-        fill(255, 158, 0, 100);
+        fill(255, 158, 70, 100);
       }
       else {
         fill(0, 0, 255, 100);
       }
-      ellipse(currentPosition.x, currentPosition.y, 2, 2);
+      ellipse(currentPosition.x, currentPosition.y, 3, 3);
 
       //Line between the stations
       if (user_type.equals("Customer")) {

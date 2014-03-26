@@ -201,7 +201,7 @@ void draw() {
   else {
     ampm = "pm";
   }
-  println(floor(currentTime*totalMinutes)%60);
+  
   if (floor(48*currentTime)>23) {
     //currentDate = "November 1st";
     currentDate = "9/18/13";
@@ -224,7 +224,7 @@ void draw() {
   //weather display
   textFont(font18);
   textSize(18);
-  if (currentDate =="9/17/13") {
+  if (currentDate.equals("9/17/13")) {
     fill(200);
     text("Weather", lEdge+85, height-542);
     text("66.9/51.4", lEdge+85, height-525);
@@ -244,10 +244,14 @@ void draw() {
   text(newCurrentHour+":"+nf(currentMinutes, 2)+ampm, lEdge+85, (height - 600)); // date in timeline
   //End time and date
   
+  println(currentTime);
+  //println(float(10*60)/totalMinutes);
+  
 //Train Delay
   fill(255, 0, 0);
-  if (currentDate =="9/17/13") {
-    if ((newCurrentHour+":"+nf(currentMinutes, 2)+ampm).equals("10:01am")) {
+  if (currentDate.equals("9/17/13")) {
+    if (currentTime > (float(10*60)/totalMinutes) && currentTime< (float(11*60)/totalMinutes)){
+    //if ((newCurrentHour+":"+nf(currentMinutes, 2)+ampm).equals("10:01am")) {
       textFont(font12);
       text("Transit Delay", lEdge+85, height - 485 );
       text("4/5 Train", lEdge+85, height - 460 );

@@ -3,7 +3,10 @@ float mapScreenWidth, mapScreenHeight;
 float mapGeoLeft   = -74.055045;       
 float mapGeoRight  = -73.921255;
 float mapGeoTop    =  40.776837;
-float mapGeoBottom =  40.675890;     
+float mapGeoBottom =  40.675890;
+
+int startingFrame = 0;
+
 
 //bk zoom
 //float mapGeoLeft   = -74.000130;       
@@ -58,6 +61,7 @@ void setup() {
   mapScreenHeight = height;
   getStationInfo();
   getTripInfo();
+  frameCount = startingFrame;
 }
 
 void draw() {
@@ -188,7 +192,7 @@ void draw() {
   textFont(fontDigits);
   textSize(36);
   text(active_rides, lEdge+80, (tBound-630)); // rides on screen now
-    textAlign(LEFT);
+  textAlign(LEFT);
   textSize(18);
   textFont(fontDigits18);
   text( "Total: " + plotted, lEdge+90, height-650);
@@ -234,7 +238,7 @@ void draw() {
   text(currentDate, lEdge+85, (height - 575)); // date in timeline
 
   //weather display
-    textFont(fontDigits18);
+  textFont(fontDigits18);
   textSize(18);
   if (currentDate =="9/17/13") {
     fill(200);
@@ -267,8 +271,7 @@ void draw() {
   int trText=height-460;
   int locText=height-445;
   int lineText=lEdge+85;
-  if (currentDate =="9/17/13") {
-    //println(float(14*60)/totalMinutes, currentTime);
+  if (currentDate.equals("9/17/13")) {
     if (currentTime > (float(7*60)/totalMinutes) && currentTime< (float(8*60)/totalMinutes)) {
       textFont(font14);
       text("Transit Delay:", lineText, tdText );
@@ -326,10 +329,9 @@ void draw() {
       rect(380, 290, 25, 25);
     }
   }
- 
-  if (currentDate =="9/18/13") {
+  else {
     //println(float(14*60)/totalMinutes, currentTime);
-    if (currentTime > (float(3*60)/totalMinutes) && currentTime< (float(4*60)/totalMinutes)) {
+    if (currentTime > (float((24+3)*60)/totalMinutes) && currentTime< (float((24+4)*60)/totalMinutes)) {
       textFont(font14);
       text("Transit Delay:", lineText, tdText );
       textFont(font12);
@@ -341,7 +343,7 @@ void draw() {
       rect(440, 80, 25, 25);
       //ellipse(390, 300, 7, 7);
     }
-    if (currentTime > (float(8*60)/totalMinutes) && currentTime< (float(9*60)/totalMinutes)) {
+    if (currentTime > (float((24+8)*60)/totalMinutes) && currentTime< (float((24+9)*60)/totalMinutes)) {
       textFont(font14);
       text("Transit Delay:", lineText, tdText );
       textFont(font12);
@@ -352,7 +354,7 @@ void draw() {
       stroke(255, 0, 0, 70);
       rect(300, 330, 25, 25);
     }
-    if (currentTime > (float(12*60)/totalMinutes) && currentTime< (float(13*60)/totalMinutes)) {
+    if (currentTime > (float((24+12)*60)/totalMinutes) && currentTime< (float((24+13)*60)/totalMinutes)) {
       textFont(font14);
       text("Transit Delay:", lineText, tdText );
       textFont(font12);
@@ -363,7 +365,7 @@ void draw() {
       stroke(255, 0, 0, 70);
       rect(430, 680, 25, 25);
     } 
-    if (currentTime > (float(13*60)/totalMinutes) && currentTime< (float(14*60)/totalMinutes)) {
+    if (currentTime > (float((24+13)*60)/totalMinutes) && currentTime< (float((24+14)*60)/totalMinutes)) {
       textFont(font14);
       text("Transit Delay:", lineText, tdText );
       textFont(font12);
@@ -374,7 +376,7 @@ void draw() {
       stroke(255, 0, 0, 70);
       rect(260, 550, 25, 25);
     }
-    if (currentTime > (float(16*60)/totalMinutes) && currentTime< (float(17*60)/totalMinutes)) {
+    if (currentTime > (float((24+16)*60)/totalMinutes) && currentTime< (float((24+17)*60)/totalMinutes)) {
       textFont(font14);
       text("Transit Delay:", lineText, tdText );
       textFont(font12);
@@ -417,7 +419,6 @@ void draw() {
   line(lEdge+35, height-60, lEdge+35, height-75-active_costumers/2);
   textFont(font24);
   fill(150);
-  
 }
 //end active bars
 

@@ -49,7 +49,7 @@ void setup() {
   background(255);
   backgroundMap   = loadImage("nyc.png");
   smooth();
-  frameRate(24);
+  frameRate(18);
 
 
 
@@ -62,7 +62,7 @@ void setup() {
 
 void draw() {
   //delay(20);
-  //saveFrame("movie/citibike-####.png");
+  saveFrame("movie/citibike-#####.tga");
   background(255);
   smooth();
   image(backgroundMap, 0, 0, mapScreenWidth, mapScreenHeight);
@@ -79,6 +79,9 @@ void draw() {
   PFont  fontb48 = loadFont("Archer-Bold-48.vlw");
   PFont  fontl36 = loadFont("Archer-Light-36.vlw");
   PFont  fontl24 = loadFont("Archer-Light-24.vlw");
+  PFont  fontDigits = loadFont("TradeGothicLTStd-Light-36.vlw");
+  PFont  fontDigits18 = loadFont("TradeGothicLTStd-Light-18.vlw");
+
 
   active_rides = 0;
   active_costumers = 0;
@@ -94,7 +97,6 @@ void draw() {
     active_subscribers = active_subscribers + myRide[i].subscribers;
     plotted = plotted + myRide[i].mapped;
   }
-  println(plotted+" bike rides plotted.");
   if (frameCount > totalAnimationFrames) {
     exit();
   }
@@ -126,25 +128,29 @@ void draw() {
   //Legend Begin
   //Citi Bike Station
   textAlign(RIGHT);
+  fill(255, 90);
+  rect(rEdge-180, tBound-530, 180, 140);
   textFont(font18);
+  fill(200);
+  ellipse(rEdge-20, tBound-505, 6, 6);
   fill(150);
-  ellipse(rEdge-10, tBound-705, 6, 6);
-  text("Citi Bike Station", rEdge-26, tBound-700);
+  text("Citi Bike Station", rEdge-33, tBound-500);
 
   //Station and Ride Legend
   strokeWeight(1);
   stroke(0, 0, 255, 50);
+
   fill(150);
   noFill();
   stroke(150, 50);
   fill(0, 0, 255);
-  text("Annual Member", rEdge-26, tBound-668);
+  text("Annual Member", rEdge-33, tBound-468);
   fill(0, 0, 255, 50);
-  ellipse(rEdge-10, tBound-673, 22, 22);
+  ellipse(rEdge-30, tBound-453, 22, 22);
   fill(255, 158, 0);
-  text("Casual Member", rEdge-26, tBound-635);
+  text("Casual Member", rEdge-33, tBound-413);
   fill(255, 158, 0, 50);
-  ellipse(rEdge-10, tBound-640, 22, 22);
+  ellipse(rEdge-40, tBound-440, 22, 22);
   textAlign(LEFT);
   //Legend End
 
@@ -160,7 +166,7 @@ void draw() {
   textFont(font24);
   textSize(24);
   textAlign(CENTER);
-  text("Citi Bike Trip Starts", width/2, 24);
+  text("Citi Bike Trips", width/2, 24);
   textFont(font14);
   text("Tues, Sept. 17th & Wed, Sept 18th, 2013", width/2, 39);
   textAlign(LEFT);
@@ -179,7 +185,13 @@ void draw() {
   textFont(fontb36);
   textSize(36);
   fill(150);
+  textFont(fontDigits);
+  textSize(36);
   text(active_rides, lEdge+80, (tBound-630)); // rides on screen now
+    textAlign(LEFT);
+  textSize(18);
+  textFont(fontDigits18);
+  text( "Total: " + plotted, lEdge+90, height-650);
 
   //line structure for time/details
   strokeWeight(1);
@@ -187,8 +199,8 @@ void draw() {
   textSize(18);
   stroke(150);
   strokeWeight(1);
-  line(lEdge, height-642, lEdge+80, height-642);
-  line(lEdge+78, height-647, lEdge+78, height-342);
+  line(lEdge, height-640, lEdge+180, height-640);
+  line(lEdge+78, height-640, lEdge+78, height-342);
 
 
   //time and date display
@@ -201,7 +213,6 @@ void draw() {
   else {
     ampm = "pm";
   }
-  println(floor(currentTime*totalMinutes)%60);
   if (floor(48*currentTime)>23) {
     //currentDate = "November 1st";
     currentDate = "9/18/13";
@@ -219,6 +230,7 @@ void draw() {
   fill(150);
   textFont(font24);
   textSize(24);
+  textFont(fontDigits18);
   text(currentDate, lEdge+85, (height - 575)); // date in timeline
 
   //weather display
@@ -227,51 +239,167 @@ void draw() {
   if (currentDate =="9/17/13") {
     fill(200);
     text("Weather", lEdge+85, height-542);
-    text("66.9/51.4", lEdge+85, height-525);
-    text("No Rain", lEdge+85, height-505);
+    fill(150);
+    textFont(fontDigits18);
+    text("67°/51°", lEdge+85, height-520);
+    textFont(font18);
+    text("No Rain", lEdge+85, height-500);
   }
   else {
+    fill(200);
     text("Weather", lEdge+85, height-542);
-    text("67.8/54.7", lEdge+85, height-525);
-    text("No Rain", lEdge+85, height-505);
+    fill(150);
+    textFont(fontDigits18);
+    text("67°/55°", lEdge+85, height-520);
+    textFont(font18);
+    text("No Rain", lEdge+85, height-500);
   }
 
-  
+
   //time display
   fill(150);
-  textFont(fontb36);
-  textSize(36);
-  text(newCurrentHour+":"+nf(currentMinutes, 2)+ampm, lEdge+85, (height - 600)); // date in timeline
+  textAlign(LEFT);
+  textFont(fontDigits);
+  textSize(30);
+  text(newCurrentHour+":"+nf(currentMinutes, 2)+""+ampm, lEdge+83, (height - 600)); // date in timeline
   //End time and date
-  
-//Train Delay
+
+  //Train Delay
   fill(255, 0, 0);
+  int tdText=height-475;
+  int trText=height-460;
+  int locText=height-445;
+  int lineText=lEdge+85;
   if (currentDate =="9/17/13") {
-    if ((newCurrentHour+":"+nf(currentMinutes, 2)+ampm).equals("10:01am")) {
+    //println(float(14*60)/totalMinutes, currentTime);
+    if (currentTime > (float(7*60)/totalMinutes) && currentTime< (float(8*60)/totalMinutes)) {
+      textFont(font14);
+      text("Transit Delay:", lineText, tdText );
       textFont(font12);
-      text("Transit Delay", lEdge+85, height - 485 );
-      text("4/5 Train", lEdge+85, height - 460 );
-      text("Union Square", lEdge+85, height - 445 );
+      text("2/3 trains", lineText, trText );
+      text("Wall Street", lineText, locText );
+      noFill();
+      strokeWeight(3);
+      stroke(255, 0, 0, 70);
+      rect(250, 560, 25, 25);
+      //ellipse(390, 300, 7, 7);
     }
-    if ((newCurrentHour+":"+nf(currentMinutes, 2)+ampm).equals("11:25am")) {
+    if (currentTime > (float(10*60)/totalMinutes) && currentTime< (float(12*60)/totalMinutes)) {
+      textFont(font14);
+      text("Transit Delay:", lineText, tdText );
       textFont(font12);
-      text("Transit Delay", lEdge+85, height - 485 );
-      text("4/5 Train", lEdge+85, height - 460 );
-      text("Union Square", lEdge+85, height - 445 );
+      text("4/5 Trains", lineText, trText );
+      text("Union Square", lineText, locText );
+      noFill();
+      strokeWeight(3);
+      stroke(255, 0, 0, 70);
+      rect(380, 290, 25, 25);
     }
-    if ((newCurrentHour+":"+nf(currentMinutes, 2)+ampm).equals("12:48pm")) {
+    if (currentTime > (float(12*60)/totalMinutes) && currentTime< (float(13*60)/totalMinutes)) {
+      textFont(font14);
+      text("Transit Delay:", lineText, tdText );
       textFont(font12);
-      text("Transit Delay", lEdge+85, height - 485 );
-      text("N/Q/R Train", lEdge+85, height - 460 );
-      text("Times Square", lEdge+85, height - 445 );
+      text("N/Q/R Trains", lineText, trText );
+      text("Times Square", lineText, locText );
+      noFill();
+      strokeWeight(3);
+      stroke(255, 0, 0, 70);
+      rect(400, 130, 25, 25);
+    } 
+    if (currentTime > (float(19*60)/totalMinutes) && currentTime< (float(19*60)/totalMinutes)) {
+      textFont(font14);
+      text("Transit Delay:", lineText, tdText );
+      textFont(font12);
+      text("2/3 Train", lineText, trText );
+      text("Atlantic AVenue", lineText, locText );
+      noFill();
+      strokeWeight(3);
+      stroke(255, 0, 0, 70);
+      rect(430, 680, 25, 25);
     }
-    if ((newCurrentHour+":"+nf(currentMinutes, 2)+ampm).equals("7:06pm")) {
+    if (currentTime > (float(20*60)/totalMinutes) && currentTime< (float(20*60)/totalMinutes)) {
+      textFont(font14);
+      text("Transit Delay:", lineText, tdText );
       textFont(font12);
-      text("Transit Delay", lEdge+85, height - 485 );
-      text("L Train", lEdge+85, height - 460 );
-      text("Union Square", lEdge+85, height - 445 );
+      text("L Train", lineText, trText+40 );
+      text("Union Square", lineText, locText+40 );
+      noFill();
+      strokeWeight(3);
+      stroke(255, 0, 0, 70);
+      rect(380, 290, 25, 25);
     }
   }
+  if (currentTime > (float(19*60)/totalMinutes) && currentTime< (float(20*60)/totalMinutes)) {
+    textFont(font14);
+    text("Transit Delay:", lineText, tdText );
+    textFont(font12);
+    text("4/5 Train", lineText, trText );
+    text("Union Square", lineText, locText );
+    noFill();
+    strokeWeight(3);
+    stroke(255, 0, 0, 70);
+    rect(380, 290, 25, 25);
+  }
+  if (currentDate =="9/18/13") {
+    //println(float(14*60)/totalMinutes, currentTime);
+    if (currentTime > (float(3*60)/totalMinutes) && currentTime< (float(4*60)/totalMinutes)) {
+      textFont(font14);
+      text("Transit Delay:", lineText, tdText );
+      textFont(font12);
+      text("N trains", lineText, trText );
+      text("57th/7", lineText, locText );
+      noFill();
+      strokeWeight(3);
+      stroke(255, 0, 0, 70);
+      rect(250, 560, 25, 25);
+      //ellipse(390, 300, 7, 7);
+    }
+    if (currentTime > (float(8*60)/totalMinutes) && currentTime< (float(9*60)/totalMinutes)) {
+      textFont(font14);
+      text("Transit Delay:", lineText, tdText );
+      textFont(font12);
+      text("B/D Trains", lineText, trText );
+      text("West 4th St", lineText, locText );
+      noFill();
+      strokeWeight(3);
+      stroke(255, 0, 0, 70);
+      rect(380, 290, 25, 25);
+    }
+    if (currentTime > (float(12*60)/totalMinutes) && currentTime< (float(13*60)/totalMinutes)) {
+      textFont(font14);
+      text("Transit Delay:", lineText, tdText );
+      textFont(font12);
+      text("L Trains", lineText, trText );
+      text("Atlantic Ave.", lineText, locText );
+      noFill();
+      strokeWeight(3);
+      stroke(255, 0, 0, 70);
+      rect(400, 130, 25, 25);
+    } 
+    if (currentTime > (float(13*60)/totalMinutes) && currentTime< (float(14*60)/totalMinutes)) {
+      textFont(font14);
+      text("Transit Delay:", lineText, tdText );
+      textFont(font12);
+      text("J Train", lineText, trText );
+      text("Broad Street", lineText, locText );
+      noFill();
+      strokeWeight(3);
+      stroke(255, 0, 0, 70);
+      rect(430, 680, 25, 25);
+    }
+    if (currentTime > (float(16*60)/totalMinutes) && currentTime< (float(17*60)/totalMinutes)) {
+      textFont(font14);
+      text("Transit Delay:", lineText, tdText );
+      textFont(font12);
+      text("R Train", lineText, trText+40 );
+      text("Canal St.", lineText, locText+40 );
+      noFill();
+      strokeWeight(3);
+      stroke(255, 0, 0, 70);
+      rect(380, 290, 25, 25);
+    }
+  }
+
   //Begin activity bars
   // Activity bars: measure of the number of riders on screen
   //labels
@@ -299,10 +427,10 @@ void draw() {
   stroke(255, 183, 0, 10);
   line(lEdge+35, height-60, lEdge+35, height-625);
   stroke(255, 183, 0);
-  line(lEdge+35, height-60, lEdge+35, height-75-active_costumers/3);
+  line(lEdge+35, height-60, lEdge+35, height-75-active_costumers/2);
   textFont(font24);
   fill(150);
-  text( "Rider Total: " + plotted, lEdge+80, height-50);
+  
 }
 //end active bars
 

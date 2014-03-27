@@ -24,7 +24,7 @@ class Stations {
     noFill();
         noStroke();
 
-    fill(200, 90);
+    fill(170, 90);
     //stroke(100, 20);
     //strokeWeight(1);
     ellipse(lon, lat, 3, 3);

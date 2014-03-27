@@ -160,7 +160,7 @@ void draw() {
   fill(0, 80);
   rect(0, 0, width, 45);
   stroke(1);
-  strokeWeight(.5);
+  strokeWeight(.55);
   fill(255);
   line(0, 45, width, 45);
   textFont(font24);
@@ -213,10 +213,6 @@ void draw() {
   else {
     ampm = "pm";
   }
-<<<<<<< HEAD
-=======
-  
->>>>>>> FETCH_HEAD
   if (floor(48*currentTime)>23) {
     //currentDate = "November 1st";
     currentDate = "9/18/13";
@@ -238,15 +234,13 @@ void draw() {
   text(currentDate, lEdge+85, (height - 575)); // date in timeline
 
   //weather display
-  textFont(font18);
+    textFont(fontDigits18);
   textSize(18);
-  if (currentDate.equals("9/17/13")) {
+  if (currentDate =="9/17/13") {
     fill(200);
     text("Weather", lEdge+85, height-542);
     fill(150);
-    textFont(fontDigits18);
-    text("67°/51°", lEdge+85, height-520);
-    textFont(font18);
+    text("67°"+" / " + "51°", lEdge+85, height-520);
     text("No Rain", lEdge+85, height-500);
   }
   else {
@@ -254,8 +248,7 @@ void draw() {
     text("Weather", lEdge+85, height-542);
     fill(150);
     textFont(fontDigits18);
-    text("67°/55°", lEdge+85, height-520);
-    textFont(font18);
+    text("67°" +" / "+"55°", lEdge+85, height-520);
     text("No Rain", lEdge+85, height-500);
   }
 
@@ -267,7 +260,6 @@ void draw() {
   textSize(30);
   text(newCurrentHour+":"+nf(currentMinutes, 2)+""+ampm, lEdge+83, (height - 600)); // date in timeline
   //End time and date
-<<<<<<< HEAD
 
   //Train Delay
   fill(255, 0, 0);
@@ -289,20 +281,9 @@ void draw() {
       rect(250, 560, 25, 25);
       //ellipse(390, 300, 7, 7);
     }
-    if (currentTime > (float(10*60)/totalMinutes) && currentTime< (float(12*60)/totalMinutes)) {
+    if (currentTime > (float(9*60)/totalMinutes) && currentTime< (float(12*60)/totalMinutes)) {
       textFont(font14);
       text("Transit Delay:", lineText, tdText );
-=======
-  
-  println(currentTime);
-  //println(float(10*60)/totalMinutes);
-  
-//Train Delay
-  fill(255, 0, 0);
-  if (currentDate.equals("9/17/13")) {
-    if (currentTime > (float(10*60)/totalMinutes) && currentTime< (float(11*60)/totalMinutes)){
-    //if ((newCurrentHour+":"+nf(currentMinutes, 2)+ampm).equals("10:01am")) {
->>>>>>> FETCH_HEAD
       textFont(font12);
       text("4/5 Trains", lineText, trText );
       text("Union Square", lineText, locText );
@@ -311,7 +292,7 @@ void draw() {
       stroke(255, 0, 0, 70);
       rect(380, 290, 25, 25);
     }
-    if (currentTime > (float(12*60)/totalMinutes) && currentTime< (float(13*60)/totalMinutes)) {
+    if (currentTime > (float(11*60)/totalMinutes) && currentTime< (float(13*60)/totalMinutes)) {
       textFont(font14);
       text("Transit Delay:", lineText, tdText );
       textFont(font12);
@@ -322,7 +303,7 @@ void draw() {
       stroke(255, 0, 0, 70);
       rect(400, 130, 25, 25);
     } 
-    if (currentTime > (float(19*60)/totalMinutes) && currentTime< (float(19*60)/totalMinutes)) {
+    if (currentTime > (float(18*60)/totalMinutes) && currentTime< (float(19*60)/totalMinutes)) {
       textFont(font14);
       text("Transit Delay:", lineText, tdText );
       textFont(font12);
@@ -333,7 +314,7 @@ void draw() {
       stroke(255, 0, 0, 70);
       rect(430, 680, 25, 25);
     }
-    if (currentTime > (float(20*60)/totalMinutes) && currentTime< (float(20*60)/totalMinutes)) {
+    if (currentTime > (float(18*60)/totalMinutes) && currentTime< (float(19*60)/totalMinutes)) {
       textFont(font14);
       text("Transit Delay:", lineText, tdText );
       textFont(font12);
@@ -345,17 +326,7 @@ void draw() {
       rect(380, 290, 25, 25);
     }
   }
-  if (currentTime > (float(19*60)/totalMinutes) && currentTime< (float(20*60)/totalMinutes)) {
-    textFont(font14);
-    text("Transit Delay:", lineText, tdText );
-    textFont(font12);
-    text("4/5 Train", lineText, trText );
-    text("Union Square", lineText, locText );
-    noFill();
-    strokeWeight(3);
-    stroke(255, 0, 0, 70);
-    rect(380, 290, 25, 25);
-  }
+ 
   if (currentDate =="9/18/13") {
     //println(float(14*60)/totalMinutes, currentTime);
     if (currentTime > (float(3*60)/totalMinutes) && currentTime< (float(4*60)/totalMinutes)) {
@@ -367,7 +338,7 @@ void draw() {
       noFill();
       strokeWeight(3);
       stroke(255, 0, 0, 70);
-      rect(250, 560, 25, 25);
+      rect(440, 80, 25, 25);
       //ellipse(390, 300, 7, 7);
     }
     if (currentTime > (float(8*60)/totalMinutes) && currentTime< (float(9*60)/totalMinutes)) {
@@ -379,7 +350,7 @@ void draw() {
       noFill();
       strokeWeight(3);
       stroke(255, 0, 0, 70);
-      rect(380, 290, 25, 25);
+      rect(300, 330, 25, 25);
     }
     if (currentTime > (float(12*60)/totalMinutes) && currentTime< (float(13*60)/totalMinutes)) {
       textFont(font14);
@@ -390,7 +361,7 @@ void draw() {
       noFill();
       strokeWeight(3);
       stroke(255, 0, 0, 70);
-      rect(400, 130, 25, 25);
+      rect(430, 680, 25, 25);
     } 
     if (currentTime > (float(13*60)/totalMinutes) && currentTime< (float(14*60)/totalMinutes)) {
       textFont(font14);
@@ -401,7 +372,7 @@ void draw() {
       noFill();
       strokeWeight(3);
       stroke(255, 0, 0, 70);
-      rect(430, 680, 25, 25);
+      rect(260, 550, 25, 25);
     }
     if (currentTime > (float(16*60)/totalMinutes) && currentTime< (float(17*60)/totalMinutes)) {
       textFont(font14);
@@ -412,7 +383,7 @@ void draw() {
       noFill();
       strokeWeight(3);
       stroke(255, 0, 0, 70);
-      rect(380, 290, 25, 25);
+      rect(340, 410, 25, 25);
     }
   }
 
@@ -439,7 +410,7 @@ void draw() {
   stroke(0, 0, 255, 10);
   line(lEdge+10, height-60, lEdge+10, height-625);
   stroke(0, 0, 255);
-  line(lEdge+10, height-60, lEdge+10, height-75-active_subscribers/3);
+  line(lEdge+10, height-60, lEdge+10, height-75-active_subscribers/2);
   stroke(255, 183, 0, 10);
   line(lEdge+35, height-60, lEdge+35, height-625);
   stroke(255, 183, 0);

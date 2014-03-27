@@ -213,6 +213,10 @@ void draw() {
   else {
     ampm = "pm";
   }
+<<<<<<< HEAD
+=======
+  
+>>>>>>> FETCH_HEAD
   if (floor(48*currentTime)>23) {
     //currentDate = "November 1st";
     currentDate = "9/18/13";
@@ -236,7 +240,7 @@ void draw() {
   //weather display
   textFont(font18);
   textSize(18);
-  if (currentDate =="9/17/13") {
+  if (currentDate.equals("9/17/13")) {
     fill(200);
     text("Weather", lEdge+85, height-542);
     fill(150);
@@ -263,6 +267,7 @@ void draw() {
   textSize(30);
   text(newCurrentHour+":"+nf(currentMinutes, 2)+""+ampm, lEdge+83, (height - 600)); // date in timeline
   //End time and date
+<<<<<<< HEAD
 
   //Train Delay
   fill(255, 0, 0);
@@ -287,6 +292,17 @@ void draw() {
     if (currentTime > (float(10*60)/totalMinutes) && currentTime< (float(12*60)/totalMinutes)) {
       textFont(font14);
       text("Transit Delay:", lineText, tdText );
+=======
+  
+  println(currentTime);
+  //println(float(10*60)/totalMinutes);
+  
+//Train Delay
+  fill(255, 0, 0);
+  if (currentDate.equals("9/17/13")) {
+    if (currentTime > (float(10*60)/totalMinutes) && currentTime< (float(11*60)/totalMinutes)){
+    //if ((newCurrentHour+":"+nf(currentMinutes, 2)+ampm).equals("10:01am")) {
+>>>>>>> FETCH_HEAD
       textFont(font12);
       text("4/5 Trains", lineText, trText );
       text("Union Square", lineText, locText );

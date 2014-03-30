@@ -66,7 +66,7 @@ void setup() {
 
 void draw() {
   //delay(20);
-  saveFrame("movie/citibike-#####.tga");
+  //saveFrame("movie/citibike-#####.tga");
   background(255);
   smooth();
   image(backgroundMap, 0, 0, mapScreenWidth, mapScreenHeight);

@@ -5,7 +5,7 @@ float mapGeoRight  = -73.921255;
 float mapGeoTop    =  40.776837;
 float mapGeoBottom =  40.675890;
 
-int startingFrame = 4000;
+int startingFrame = 0;
 
 
 //bk zoom
@@ -67,7 +67,7 @@ void setup() {
 void draw() {
   //scale(2);
   //delay(20);
-  saveFrame("movie/citibike-#####.png");
+  //saveFrame("movie/citibike-#####.png");
   background(255);
   smooth();
   image(backgroundMap, 0, 0, mapScreenWidth, mapScreenHeight);
